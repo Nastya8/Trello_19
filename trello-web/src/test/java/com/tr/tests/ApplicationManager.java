@@ -84,4 +84,29 @@ public class ApplicationManager {
     public void clickOnButtonDeleteForever() {
         click(By.cssSelector("[class='js-confirm full negate']"));
     }
+
+    public void clickOnFirstBoard() {
+        click(By.cssSelector("[class='board-tile-details is-badged']"));
+    }
+
+    public void clickOnAddAListButton() {
+        click(By.cssSelector("[class='icon-sm icon-add']"));
+    }
+
+    public void typeListName() {
+        type(By.name("name"), "New list");
+    }
+
+    public void submitAddList () throws InterruptedException {
+        click(By.cssSelector("[class='primary mod-list-add-button js-save-edit']"));
+        Thread.sleep(10000);
+    }
+
+    public void clickOnButtonThreePoints() {
+        click(By.cssSelector("[class='list-header-extras-menu dark-hover js-open-list-menu icon-lg icon-overflow-menu-horizontal']"));
+    }
+
+    public void clickOnTextArchiveThisList() {
+        click(By.xpath("//*[contains(text(),'Archive This List')]"));
+    }
 }
