@@ -60,4 +60,28 @@ public class ApplicationManager {
     public void stop() {
         wd.quit();
     }
+
+    public void selectCreateTeamFromDropDown() {
+        click(By.cssSelector("[class='js-new-org']"));
+    }
+
+    public void fillTeamCreationForm(String teamName) {
+        type(By.id("org-display-name"), teamName);
+    }
+
+    public void submitTeamCreation() {
+        click(By.cssSelector("[type=submit]"));
+    }
+
+    public void clickOnPlusButtonOnSettings() {
+        click(By.cssSelector("[class='icon-sm icon-gear boards-page-board-section-header-options-item-icon']"));
+    }
+
+    public void clickOnTextDeleteThisTeam() {
+        click(By.xpath("//span[contains(text(),'Delete this team?')]"));
+    }
+
+    public void clickOnButtonDeleteForever() {
+        click(By.cssSelector("[class='js-confirm full negate']"));
+    }
 }
