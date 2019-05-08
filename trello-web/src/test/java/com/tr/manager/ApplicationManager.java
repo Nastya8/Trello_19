@@ -1,4 +1,4 @@
-package com.tr.tests;
+package com.tr.manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+    TeamHelper teamHelper;
+    BoardHelper boardHelper;
+    HeaderHelper header;
     WebDriver wd;
 
     public void start() {
@@ -16,25 +19,12 @@ public class ApplicationManager {
 
         openSite("https://trello.com/");
         login("korsarushka@yandex.ru", "vasabi2018");
+        boardHelper = new BoardHelper(wd);
+        teamHelper = new TeamHelper(wd);
+        header = new HeaderHelper(wd);
     }
 
-    public void submitBoardCreation() {
-        click(By.cssSelector("[type=submit]"));
-    }
 
-    public void fillBoardCreationForm(String boardName) {
-        type(By.xpath("//*[@class='subtle-input']"), boardName);
-    }
-
-    public void selectCreateBoardFromDropDown() {
-        click(By.cssSelector("[class='js-new-board']"));
-    }
-
-    public void clickOnPlusButtonOnHeader() throws InterruptedException {
-        Thread.sleep(10000);
-        click(By.cssSelector("[class='header-btn-icon icon-lg icon-add light']"));
-
-    }
 
     public void openSite(String url) {
         wd.get(url);
@@ -59,18 +49,6 @@ public class ApplicationManager {
 
     public void stop() {
         wd.quit();
-    }
-
-    public void selectCreateTeamFromDropDown() {
-        click(By.cssSelector("[class='js-new-org']"));
-    }
-
-    public void fillTeamCreationForm(String teamName) {
-        type(By.id("org-display-name"), teamName);
-    }
-
-    public void submitTeamCreation() {
-        click(By.cssSelector("[type=submit]"));
     }
 
     public void clickOnPlusButtonOnSettings() {
@@ -108,5 +86,22 @@ public class ApplicationManager {
 
     public void clickOnTextArchiveThisList() {
         click(By.xpath("//*[contains(text(),'Archive This List')]"));
+    }
+
+    public String getTeamName() {
+        return wd.findElement(By.cssSelector("h1.u-inline")).getText();
+    }
+
+    public BoardHelper getBoardHelper() {
+        return boardHelper;
+    }
+
+    public TeamHelper getTeamHelper() {
+        return teamHelper;
+
+    }
+
+    public HeaderHelper getHeader() {
+        return header;
     }
 }

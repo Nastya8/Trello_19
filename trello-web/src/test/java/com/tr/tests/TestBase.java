@@ -1,5 +1,6 @@
 package com.tr.tests;
 
+import com.tr.manager.ApplicationManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
