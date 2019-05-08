@@ -104,4 +104,21 @@ public class ApplicationManager {
     public HeaderHelper getHeader() {
         return header;
     }
+
+    public void clickOnButtonShowMenu() {
+        click(By.cssSelector("[class='board-header-btn mod-show-menu js-show-sidebar']"));
+    }
+
+    public void clickOnButtonMore() {
+        click(By.cssSelector("[class='board-menu-navigation-item-link js-open-more']"));
+    }
+
+    public void clickOnButtonCloseBoard() {
+        click(By.cssSelector("[class='board-menu-navigation-item-link js-close-board']"));
+    }
+
+    public void submitCloseBoard() throws InterruptedException {
+        click(By.cssSelector("[class='js-confirm full negate']"));
+        Thread.sleep(10000);
+    }
 }
