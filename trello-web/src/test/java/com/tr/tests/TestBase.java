@@ -1,12 +1,13 @@
 package com.tr.tests;
 
 import com.tr.manager.ApplicationManager;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager();
+    protected ApplicationManager app = new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
 
     @BeforeClass
     public void setUp() {
